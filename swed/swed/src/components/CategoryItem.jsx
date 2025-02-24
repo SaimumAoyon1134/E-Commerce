@@ -7,6 +7,10 @@ const Container = styled.div`
     height:70vh;
     position:relative;
     margin-bottom:35px;
+    opacity:0.8;
+    &:hover{
+    opacity:1;
+    }
 `
 const Image = styled.img`
     width:100%;
@@ -31,13 +35,16 @@ const Title= styled.h1`
   align-items: center; 
   justify-content: center; 
   margin: auto;
-  height: 50px;
+  height: 40px;
+  width:250px;
   text-align: center; 
-  font-weight:700;
-//   background-color:gray;
-border: 2px solid #000;
-  opacity:0.7;
-  border-radius:30px;
+  font-weight:200;
+  color:white;
+  background-color:teal;
+//border: 2px solid #000;
+  opacity:0.9;
+  border-radius:50px;
+
 `
 const Button = styled.button`
     border:none;
@@ -46,6 +53,8 @@ const Button = styled.button`
     color:white;
     cursor:pointer;
     font-weight:600;
+      &:hover{
+  
 `
 
 const CategoryItem = ({item}) => {
@@ -58,9 +67,9 @@ const CategoryItem = ({item}) => {
             {/* <Title>
                 {item.title}
             </Title> */}
-            <Button>
+            {/* <Button>
                 SHOP NOW
-            </Button>
+            </Button> */}
         </Info>
         </Link>
     </Container>

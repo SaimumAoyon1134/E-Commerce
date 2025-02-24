@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Login from './pages/login/Login';
 import FeaturedInfo from './components/featuredInfo/FeaturedInfo';
 import Sales from './components/sales/Sales';
+import WidgetLg from './components/widgetLg/WidgetLg';
+import Report from './pages/Report'
 function App() {
   // const [isAuthenticated, setIsAuthenticated] = useState(true); // Track authentication state
   const [admin, setAdmin] = useState(false)
@@ -51,9 +53,11 @@ function App() {
               <Route path="/products" element={<ProductList />} />
               <Route path="/product/:productId" element={<Product />} />
               <Route path="/newproduct" element={<NewProduct />} />
-              <Route path="/analytics" element={<FeaturedInfo/>} />
+              <Route path="/analytics" element={<WidgetLg/>} />
               <Route path="/sales" element={<Sales/>} />
+              <Route path="/report" element={<Report/>} />
               <Route path="*" element={<Navigate to="/" />} />
+             
             </Routes>
           </div>
           </div>

@@ -76,7 +76,7 @@ const Button = styled.button`
 `
 
   return (
-<div style={{ width: "70vh", marginLeft: "400px" }}>
+<div style={{ width: "70vh", marginLeft: "600px",marginTop:"80px" }}>
     <form onSubmit={handleSubmit}>
       <input style={{ 
     width: "300px", 

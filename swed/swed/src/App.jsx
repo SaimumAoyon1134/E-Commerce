@@ -15,7 +15,7 @@ import {
 } from 'react-router-dom';
 import Success from './pages/Success';
 import { useSelector } from 'react-redux';
-
+import NewProduct from "./pages/newProduct/NewProduct"
 function App() {
   // const user = useSelector((state)=>state.user.currentUser);
   const user = false;
@@ -34,6 +34,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/home" element={<Home />} />
         <Route path="/success" element={<Success/>} />
+        <Route path="/new" element={<NewProduct/>} />
       </Routes>
     </Router>
   );

@@ -9,8 +9,8 @@ const {
 const router = require("express").Router();
 
 //CREATE
-
-router.post("/", verifyToken, async (req, res) => {
+//verifyToken,
+router.post("/",  async (req, res) => {
   const newOrder = new Order(req.body);
 
   try {
@@ -21,8 +21,8 @@ router.post("/", verifyToken, async (req, res) => {
   }
 });
 
-//UPDATE
-router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+//UPDATE verifyTokenAndAdmin,
+router.put("/:id",  async (req, res) => {
   try {
     const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,
@@ -47,8 +47,8 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-//GET USER ORDERS
-router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
+//GET USER ORDERS verifyTokenAndAuthorization,
+router.get("/find/:userId",  async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.params.userId });
     res.status(200).json(orders);
@@ -57,9 +57,9 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// //GET ALL
+// //GET ALL verifyTokenAndAdmin,
 
-router.get("/", verifyTokenAndAdmin, async (req, res) => {
+router.get("/",  async (req, res) => {
   try {
     const orders = await Order.find();
     res.status(200).json(orders);

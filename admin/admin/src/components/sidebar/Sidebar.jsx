@@ -1,7 +1,7 @@
 import "./sidebar.css"
 import { LineStyle,Timeline,TrendingUp,PermIdentity,Storefront,AttachMoney,BarChart,MailOutline,DynamicFeed,ChatBubbleOutline,WorkOutline,Report } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 export default function Sidebar() {
   return (
     <div className="sidebar">
@@ -18,7 +18,7 @@ export default function Sidebar() {
             <Link to="/analytics" className="link">
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
-              Analytics
+              Product Requests and History
             </li>
             </Link>
             <Link to="/sales" className="link">
@@ -44,17 +44,21 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
+            <Link to="/newproduct" className="link">
             <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
+              <AddCircleOutlineIcon className="sidebarIcon" />
+              Add New Product
             </li>
+            </Link>
+            <Link to="/report" className="link">
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
             </li>
+            </Link>
           </ul>
         </div>
-        <div className="sidebarMenu">
+        {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
@@ -87,7 +91,7 @@ export default function Sidebar() {
               Reports
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

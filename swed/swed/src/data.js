@@ -25,13 +25,13 @@ export const sliderItems = [
 export const categories =[
     {
         id:1,
-        img: "https://preply.com/wp-content/uploads/2018/04/shopping_bags.jpg",
+        img: "https://as1.ftcdn.net/v2/jpg/02/14/08/48/1000_F_214084851_OzE29gNrYCBHz278z9LtIen2jUtlZtVn.jpg",
         title:"Used Products",
         cat:"Used",
     },
     {
         id:2,
-        img:"https://img.freepik.com/premium-vector/vector-illustration-red-new-product-badge-modern-speech-bubble-web-banner-element_545399-1889.jpg",
+        img:"https://media.istockphoto.com/id/1197832105/vector/male-hand-holding-megaphone-with-new-product-speech-bubble-loudspeaker-banner-for-business.jpg?s=612x612&w=0&k=20&c=INIM5M-N2DZh6pS6DUBSGh7x9ItOBSC3atZOVJtQf7M=",
         title:"New Products",
         cat:"New",
     },

@@ -116,7 +116,7 @@ const Register = () => {
                     <Button onClick={handleClick} disabled={isFetching} className="login-btn">
                         LOGIN
                     </Button>
-                    {error && <ErrorMessage>Something went wrong, please try again.</ErrorMessage>}
+                    {/* {error && <ErrorMessage>Something went wrong, please try again.</ErrorMessage>} */}
                     <Link onClick={() => navigate("/forgot-password")}>Forgot Password?</Link>
                     <Link onClick={() => navigate("/register")}>Create an account</Link>
                 </Form>

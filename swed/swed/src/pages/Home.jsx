@@ -13,18 +13,20 @@ const Title = styled.h1`
   display: flex; 
   align-items: center; 
   justify-content: center; 
+  color:white;
   margin: auto;
   height: 35px;
   width: 100vw;
   text-align: center; 
   font-weight:700;
-  background-color:#FFA500;
-  opacity:0.7;
-  border-radius:30px;
-  border: 3px solid #000;
+  background-color:teal;
+  opacity:1;
+  // border-radius:30px;
+  // border: 3px solid #000;
 `;
 
 const Home = () => {
+  
   return (
     <div>
       <Announcement/>

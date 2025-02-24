@@ -57,3 +57,30 @@
     color: #2a7ade;
 
 }
+.widgetLgButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.widgetLgButton.pending {
+  background-color: #ffcc00; /* Yellow for pending */
+  color: black;
+}
+
+.widgetLgButton.pending:hover {
+  background-color: #e6b800;
+}
+
+.widgetLgButton.approved {
+  background-color: #4caf50; /* Green for approved */
+  color: white;
+}
+
+.widgetLgButton.approved:hover {
+  background-color: #45a049;
+}

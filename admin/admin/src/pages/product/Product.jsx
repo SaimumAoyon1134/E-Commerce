@@ -67,7 +67,7 @@ export default function Product() {
                       </label>
                       <input type="file" id="file" style={{display:"none"}} />
                   </div>
-                  <button className="productButton">Update</button>
+                  {/* <button className="productButton">Update</button> */}
               </div>
           </form>
       </div>

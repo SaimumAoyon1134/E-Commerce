@@ -24,8 +24,8 @@ router.put("/:id",verifyTokenAndAdmin,async(req,res)=>{
 });
 
 //CREATE
-
-router.post("/", verifyTokenAndAdmin, async(req,res)=>{
+// verifyTokenAndAdmin,
+router.post("/", async(req,res)=>{
     const newProduct = new Product(req.body);
     try{
         const savedProduct = await newProduct.save();

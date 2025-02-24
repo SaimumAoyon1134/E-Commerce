@@ -288,7 +288,7 @@ const Button = styled.button`
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star';
-
+import Success from './Success'
 const labels = {
   0.5: 'Useless',
   1: 'Useless+',
@@ -309,6 +309,8 @@ const Cart = () => {
   const [value, setValue] = useState(2);
   const [hover, setHover] = useState(-1);
     const cart = useSelector((state) => state.cart);
+    const tot=cart.total;
+    console.log(tot)
     const dispatch = useDispatch(); // Hook for dispatching actions
     const [stripeToken, setStripeToken] = useState(null);
     const history = useNavigate();
@@ -357,6 +359,8 @@ const Cart = () => {
    
     return (
       <Container>
+       
+         
         <Navbar />
         <Announcement />
         <Wrapper>
@@ -436,13 +440,14 @@ const Cart = () => {
               <SummeryItem type="total">
                 <SummeryItemText>Total</SummeryItemText>
                 <SummeryItemPrice>{cart.total}TK</SummeryItemPrice>
+                
               </SummeryItem>
   
               <StripeCheckout
                 name="CUET E-Bazar"
                 image="https://cdn.dribbble.com/users/6481365/screenshots/15907287/media/49902be5f09602c3214b9cde2c4f672f.jpg"
-                billingAddress
-                shippingAddress
+                // billingAddress
+                // shippingAddress
                 description={`Your total is ${cart.total}Taka`}
                 amount={cart.total * 100} // Amount in cents (2000 cents = 20 dollars)
                 token={onToken}

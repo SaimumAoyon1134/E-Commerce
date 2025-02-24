@@ -4,55 +4,129 @@ import { userRequest } from "../../requestMethods";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 
 export default function Sales() {
-  const [income,setIncome]=useState([]);
-  const [perc,setPerc]=useState(0);
-  useEffect(()=>{
-    const getIncome = async ()=>{
-      try{
-        const res =await userRequest.get("orders");
-        setIncome(res.data);
-        // setPerc(res.data[1]);
-        console.log(res.data);
+  const [salesData, setSalesData] = useState({
+    totalSales: 0,
+    dailySales: 0,
+    monthlySales: 0,
+    yearlySales: 0,
+  });
 
-      }catch{
-        console.log("Error");
+  useEffect(() => {
+
+    const fetchSalesData = async () => {
+      try {
+        const res = await userRequest.get("orders/income"); 
+        const incomeData = res.data;
+
+        const monthlySales = incomeData.reduce((acc, item) => {
+          return acc + item.total;
+        }, 0);
+        setSalesData((prevState) => ({
+          ...prevState,
+          monthlySales: monthlySales,
+        }));
+      } catch (err) {
+        console.log("Error fetching monthly income:", err);
       }
-    }
-    getIncome();
-  },[])
+    };
+
+    fetchSalesData();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await userRequest.get("orders"); 
+        const orders = response.data;
+
+        let totalSales = 0;
+        let dailySales = 0;
+        let yearlySales = 0;
+
+        const today = new Date();
+
+        orders.forEach((order) => {
+          const orderDate = new Date(order.createdAt);
+          const amount = order.amount;
+
+
+          totalSales += amount;
+
+
+          if (orderDate.toDateString() === today.toDateString()) {
+            dailySales += amount;
+          }
+
+
+          if (orderDate.getFullYear() === today.getFullYear()) {
+            yearlySales += amount;
+          }
+        });
+
+        setSalesData((prevState) => ({
+          ...prevState,
+          totalSales,
+          dailySales,
+          yearlySales,
+        }));
+      } catch (err) {
+        console.log("Error fetching all orders:", err);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   return (
     <div className="featured">
+
       <div className="featuredItem">
-        <span className="featuredTitle">Sales in the last years</span>
+        <span className="featuredTitle">Total Sales</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">BDT 20,415</span>
+          <span className="featuredMoney">BDT {salesData.totalSales}</span>
           <span className="featuredMoneyRate">
-            -11.4 <ArrowDownward  className="featuredIcon negative"/>
+        
+          </span>
+        </div>
+        <span className="featuredSub">Total sales across all time</span>
+      </div>
+
+    
+      <div className="featuredItem">
+        <span className="featuredTitle">Sales in the Last Year</span>
+        <div className="featuredMoneyContainer">
+          <span className="featuredMoney">BDT {salesData.yearlySales}</span>
+          <span className="featuredMoneyRate">
+          
+          </span>
+        </div>
+        <span className="featuredSub">Compared to last year</span>
+      </div>
+
+  
+      <div className="featuredItem">
+        <span className="featuredTitle">Sales in the Last Month</span>
+        <div className="featuredMoneyContainer">
+          <span className="featuredMoney">BDT {salesData.monthlySales}</span>
+          <span className="featuredMoneyRate">
+      
           </span>
         </div>
         <span className="featuredSub">Compared to last month</span>
       </div>
+
+
       <div className="featuredItem">
-        <span className="featuredTitle">Sales in the last month</span>
+        <span className="featuredTitle">Sales in the Last Day</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">BDT 4,415</span>
+          <span className="featuredMoney">BDT {salesData.dailySales}</span>
           <span className="featuredMoneyRate">
-            -1.4 <ArrowDownward className="featuredIcon negative"/>
+       
           </span>
         </div>
-        <span className="featuredSub">Compared to last month</span>
-      </div>
-      <div className="featuredItem">
-        <span className="featuredTitle">Sales in the last day</span>
-        <div className="featuredMoneyContainer">
-          <span className="featuredMoney">BDT 2,225</span>
-          <span className="featuredMoneyRate">
-            +2.4 <ArrowUpward className="featuredIcon"/>
-          </span>
-        </div>
-        <span className="featuredSub">Compared to last month</span>
+        <span className="featuredSub">Compared to last day</span>
       </div>
     </div>
   );
 }
+
